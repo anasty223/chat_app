@@ -20,12 +20,19 @@ function App() {
     socket=io(CONNECTION_PORT)
   },[CONNECTION_PORT])
 
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+      console.log(data);
+      setMessageList([...messageList, data]);
+    });
+  });
+
   const connectToRoom=()=>{
     setLoggedIn(true);
     socket.emit('join_room',room)
   }
 
-  const sendMessage=()=>{
+  const sendMessage=async()=>{
 let messageContent={
 room:room,
 content:{
@@ -34,7 +41,7 @@ message:message,
 }
 }
 
-    socket.emit('send_message',messageContent);
+   await socket.emit('send_message',messageContent);
     setMessageList([...messageList,messageContent.content])
     setMessage('')
   }
@@ -53,7 +60,10 @@ message:message,
      <div className='chatContainer'>
       <div className="messages">
         {messageList.map((val,key)=>{
-          return <h1>{val.author} {val.message}</h1>
+          return<div className='messageContainer' id={val.author==userName ? "You":"Other"}>
+            <div className='messageIndividual'>{val.author}: {val.message}</div>
+        
+          </div>
         })}
       </div>
 
