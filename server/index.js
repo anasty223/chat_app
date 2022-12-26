@@ -6,13 +6,13 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-const server = app.listen("https://chat-app-im1v.vercel.app", () => {
+const server = app.listen("https://serv-gamma.vercel.app/", () => {
   console.log("Server Running on Port ...");
 });
 
 io = socket(server, {
     cors:{
-        origin: 'http://localhost:3000',
+        origin: 'https://serv-gamma.vercel.app/',
         methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
         allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Headers', 'Access-Control-Allow-Methods', 'Access-Control-Allow-Credentials'],
         withCredentials: true

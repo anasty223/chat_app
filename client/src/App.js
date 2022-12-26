@@ -4,7 +4,7 @@ import './App.css';
 
 
 let socket;
-const CONNECTION_PORT='https://chat-app-im1v.vercel.app/'
+const CONNECTION_PORT='https://server-br24.onrender.com'
 
 function App() {
 
