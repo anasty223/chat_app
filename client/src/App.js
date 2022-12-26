@@ -2,8 +2,9 @@ import {useEffect, useState} from 'react'
 import io from 'socket.io-client'
 import './App.css';
 
+
 let socket;
-const CONNECTION_PORT='localhost:3002/'
+const CONNECTION_PORT='https://chat-app-im1v.vercel.app/'
 
 function App() {
 
